@@ -208,12 +208,17 @@ const newsecretpage = () => {
       </div>
 
       {/* Right Section (Covers Other Half of Screen) */}
-      <div className="w-full sm:w-1/2 flex justify-center items-center mt-6 sm:mt-0">
-        <img
-          src="/images/Picture4.jpg"
-          alt="Dashboard Preview"
-          className="rounded-lg w-4/5 sm:w-full"
-        />
+      <div className="sm:block hidden w-full sm:w-1/2  flex items-center justify-center mt-6 sm:mt-0">
+        <div className="flex justify-center items-center h-[calc(100vh-2rem)] w-full sticky top-4">
+          <img
+            alt="Dashboard Preview"
+            loading="lazy"
+            decoding="async"
+            src="/images/Picture4.jpg" // Replace with your image
+            className="h-auto w-4/6 px-3 "
+            style={{ color: "transparent" }}
+          />
+        </div>
       </div>
     </div>
   );

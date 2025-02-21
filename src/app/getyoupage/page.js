@@ -38,12 +38,17 @@ const getyoupage = () => {
   return (
     <div className="flex flex-col sm:flex-row min-h-screen">
       {/* Right Section (Covers Other Half of Screen) */}
-      <div className="w-full sm:w-1/2 flex justify-center items-center p-6">
-        <img
-          src="/images/Picture3.jpg"
-          alt="Dashboard Preview"
-          className="rounded-lg shadow-lg w-full sm:w-4/5"
-        />
+      <div className="sm:block hidden w-full sm:w-1/2  flex items-center justify-center mt-6 sm:mt-0">
+        <div className="flex justify-center items-center h-[calc(100vh-2rem)] w-full sticky top-4">
+          <img
+            alt="Dashboard Preview"
+            loading="lazy"
+            decoding="async"
+            src="/images/Picture3.jpg" // Replace with your image
+            className="h-auto w-4/6 px-3 "
+            style={{ color: "transparent" }}
+          />
+        </div>
       </div>
 
       {/* Left Section (Covers Half of Screen) */}

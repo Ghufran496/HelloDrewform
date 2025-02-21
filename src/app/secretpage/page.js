@@ -137,13 +137,17 @@ const SecretPage = () => {
       </div>
 
       {/* Right Section (Covers Other Half of Screen) */}
-      <div className="sm:w-1/2 flex justify-center items-center mt-6 sm:mt-0">
-        {/* Replace with the uploaded images */}
-        <img
-          src="/images/Picture3.jpg" // First uploaded image
-          alt="Dashboard Preview"
-          className="rounded-lg shadow-lg w-4/5 sm:w-full"
-        />
+      <div className="sm:block hidden w-full sm:w-1/2  flex items-center justify-center mt-6 sm:mt-0">
+        <div className="flex justify-center items-center h-[calc(100vh-2rem)] w-full sticky top-4">
+          <img
+            alt="Dashboard Preview"
+            loading="lazy"
+            decoding="async"
+            src="/images/Picture2.jpg" // Replace with your image
+            className="h-auto w-4/6 px-3 "
+            style={{ color: "transparent" }}
+          />
+        </div>
       </div>
     </div>
   );

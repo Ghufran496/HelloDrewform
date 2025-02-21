@@ -31,7 +31,7 @@ export default function Home() {
     <div className={styles.formContainer}>
       <div className="flex flex-col sm:flex-row w-full max-w-7xl mx-auto">
         {/* Left Section (Form) */}
-        <div className="flex flex-col p-6 sm:p-12 sm:w-1/2 w-full">
+        <div className="flex flex-col sm:p-12 sm:w-1/2 w-full">
           <p className={styles.title}>Say Hello to Drew!</p>
           <h1 className={styles.subtitle}>
             Your MVP is Here, Time to Dominate.
@@ -211,14 +211,19 @@ export default function Home() {
         </div>
 
         {/* Right Section (Image) */}
-        <div className={`${styles.imageSection} hidden sm:block sm:w-1/2`}>
-          <Image
-            src="/images/Picture1.jpg"
-            alt="Form Image"
-            width={600}
-            height={600}
-            layout="responsive"
-          />
+        <div className="sm:block hidden w-full sm:w-1/2  flex items-center justify-center mt-6 sm:mt-0">
+          <div className="flex justify-center items-center h-[calc(100vh-2rem)] w-full sticky top-4">
+            <img
+              alt="HelloDrew Logo"
+              loading="lazy"
+              width="3" // Smaller width
+              height="30" // Smaller height
+              decoding="async"
+              src="/images/Picture1.jpg" // Replace with your image
+              className="h-auto w-4/5 px-3"
+              style={{ color: "transparent" }}
+            />
+          </div>
         </div>
       </div>
     </div>

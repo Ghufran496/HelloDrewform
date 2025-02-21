@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "Harmonia Sans";
   src: url("/fonts/HarmoniaSansW01Regular.ttf") format("truetype"),
     url("/fonts/HarmoniaSansW01Regular.otf") format("opentype");
@@ -32,6 +32,19 @@
     url("/fonts/HarmoniaSansW06Condensed.otf") format("opentype");
   font-weight: normal;
   font-style: condensed;
+} */
+
+@font-face {
+  font-family: "Harmonia Sans";
+  src: url("/fonts/HarmoniaSans-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: condensed;
+}
+@font-face {
+  font-family: "Harmonia Sans";
+  src: url("/fonts/HarmoniaSans-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 html,
@@ -44,6 +57,7 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: "Harmonia Sans", sans-serif;
 }
 
 /* LandingPage.module.css */

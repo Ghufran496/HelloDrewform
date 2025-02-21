@@ -57,7 +57,7 @@ export default function TalkPage() {
         updatedData.talkFormData.teamSize.length > 0
           ? updatedData.talkFormData.teamSize
           : "None",
-      crm: crmTools.length > 0 ? crmTools : "None", 
+      crm: crmTools.length > 0 ? crmTools : "None",
       features: selectedFeatures.length > 0 ? selectedFeatures : "None",
       budget:
         updatedData.talkFormData.budget.length > 0
@@ -90,7 +90,7 @@ export default function TalkPage() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row min-h-screen bg-white p-4 sm:p-8 m-4 sm:m-8">
+    <div className="flex flex-col sm:flex-row min-h-screen bg-white  sm:p-4  sm:m-4">
       {/* Left Section */}
       <div className="w-full sm:w-1/2 p-6">
         {/* Back Button + Heading */}
@@ -104,7 +104,12 @@ export default function TalkPage() {
             Final Touch: Let’s Talk Numbers
           </h1>
         </div>
-        <Progress percent={100} size="small" className="mb-4" showInfo={false} />
+        <Progress
+          percent={100}
+          size="small"
+          className="mb-4"
+          showInfo={false}
+        />
         <p className="text-gray-600 mt-2">
           Let’s get real, AI this powerful does not price itself.
         </p>
@@ -116,15 +121,17 @@ export default function TalkPage() {
             <div className="flex flex-col sm:flex-row sm:justify-between justify-between items-center mt-4">
               {["< $500/month", "$500-$1K/month", "$1K-$2.5K/month"].map(
                 (option) => (
-                  <div
-                    key={option}
-                    className="flex items-center space-x-2 sm:space-x-2 mb-4 sm:mb-0"
-                  >
-                    <Switch
-                      checked={talkFormData.budget === option}
-                      onChange={() => handleSwitchChange("budget", option)}
-                    />
-                    <span className="text-sm sm:text-sm">{option}</span>
+                  <div className="w-1/3">
+                    <div
+                      key={option}
+                      className="flex items-center space-x-2 sm:space-x-2 mb-4 sm:mb-0"
+                    >
+                      <Switch
+                        checked={talkFormData.budget === option}
+                        onChange={() => handleSwitchChange("budget", option)}
+                      />
+                      <span className="text-sm sm:text-sm">{option}</span>
+                    </div>
                   </div>
                 )
               )}
@@ -135,12 +142,14 @@ export default function TalkPage() {
             <h2 className="font-semibold">How many people are on your team?</h2>
             <div className="flex justify-between items-center mt-4">
               {["1-5", "6-10", "11-50"].map((option) => (
-                <div key={option} className="flex items-center space-x-2">
-                  <Switch
-                    checked={talkFormData.teamSize === option}
-                    onChange={() => handleSwitchChange("teamSize", option)}
-                  />
-                  <span className="text-sm">{option}</span>
+                <div className="w-1/3">
+                  <div key={option} className="flex items-center space-x-2">
+                    <Switch
+                      checked={talkFormData.teamSize === option}
+                      onChange={() => handleSwitchChange("teamSize", option)}
+                    />
+                    <span className="text-sm">{option}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -153,12 +162,14 @@ export default function TalkPage() {
             </h2>
             <div className="flex justify-between items-center mt-4">
               {["< 15/day", "15-50/day", "50-100/day"].map((option) => (
-                <div key={option} className="flex items-center space-x-2">
-                  <Switch
-                    checked={talkFormData.leads === option}
-                    onChange={() => handleSwitchChange("leads", option)}
-                  />
-                  <span className="text-sm">{option}</span>
+                <div className="w-1/3">
+                  <div key={option} className="flex items-center space-x-2">
+                    <Switch
+                      checked={talkFormData.leads === option}
+                      onChange={() => handleSwitchChange("leads", option)}
+                    />
+                    <span className="text-sm">{option}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -171,14 +182,16 @@ export default function TalkPage() {
             </h2>
             <div className="flex justify-between items-center mt-4">
               {["Evenly", "Expertise or Region", "Manual"].map((option) => (
-                <div key={option} className="flex items-center space-x-2">
-                  <Switch
-                    checked={talkFormData.leadDistribution === option}
-                    onChange={() =>
-                      handleSwitchChange("leadDistribution", option)
-                    }
-                  />
-                  <span className="text-sm">{option}</span>
+                <div className="w-1/3">
+                  <div key={option} className="flex items-center space-x-2">
+                    <Switch
+                      checked={talkFormData.leadDistribution === option}
+                      onChange={() =>
+                        handleSwitchChange("leadDistribution", option)
+                      }
+                    />
+                    <span className="text-sm">{option}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -192,12 +205,14 @@ export default function TalkPage() {
             <div className="flex justify-between items-center mt-4">
               {["No automation", "Slow follow ups", "Too many leads"].map(
                 (option) => (
-                  <div key={option} className="flex items-center space-x-2">
-                    <Switch
-                      checked={talkFormData.challenge === option}
-                      onChange={() => handleSwitchChange("challenge", option)}
-                    />
-                    <span className="text-sm">{option}</span>
+                  <div className="w-1/3">
+                    <div key={option} className="flex items-center space-x-2">
+                      <Switch
+                        checked={talkFormData.challenge === option}
+                        onChange={() => handleSwitchChange("challenge", option)}
+                      />
+                      <span className="text-sm">{option}</span>
+                    </div>
                   </div>
                 )
               )}
@@ -224,12 +239,17 @@ export default function TalkPage() {
         </div>
       </div>
       {/* Right Section */}
-      <div className="w-full sm:w-1/2 h-full flex items-center justify-center mt-6 sm:mt-0">
-        <img
-          src="/images/Picture2.jpg"
-          alt="Drew Image"
-          className="h-auto w-4/5 sm:w-full object-cover rounded-lg"
-        />
+      <div className="sm:block hidden w-full sm:w-1/2  flex items-center justify-center mt-6 sm:mt-0">
+        <div className="flex justify-center items-center h-[calc(100vh-2rem)] w-full sticky top-4">
+          <img
+            alt="Dashboard Preview"
+            loading="lazy"
+            decoding="async"
+            src="/images/Picture5.jpg" // Replace with your image
+            className="h-auto w-4/6 px-3 "
+            style={{ color: "transparent" }}
+          />
+        </div>
       </div>
     </div>
   );
