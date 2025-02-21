@@ -25,7 +25,7 @@ export default function TalkPage() {
     setFormData((prev) => ({ ...prev, additionalInfo: e.target.value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const storedData = sessionStorage.getItem("formData");
     const parsedData = storedData ? JSON.parse(storedData) : {};
 
@@ -34,7 +34,41 @@ export default function TalkPage() {
     sessionStorage.setItem("formData", JSON.stringify(updatedData));
 
     console.log("END:::::", updatedData);
-    router.push("/finalpage");
+
+    // Prepare data for email
+    const userData = {
+      firstName: updatedData.name, // Assuming you have this in your form data
+      email: updatedData.email, // Assuming you have this in your form data
+      company: updatedData.teamName, // Assuming you have this in your form data
+      phone: updatedData.phone, // Assuming you have this in your form data
+    };
+
+    const internalData = {
+      teamSize: updatedData.talkFormData.teamSize,
+      crm: updatedData.crmTools, // Assuming you have this in your form data
+      features: updatedData.selectedFeatures, // Assuming you have this in your form data
+      budget: updatedData.talkFormData.budget,
+      additionalInfo: updatedData.talkFormData.additionalInfo,
+    };
+
+    console.log(userData, internalData);
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userData, internalData }),
+      });
+
+      if (response.ok) {
+        router.push("/finalpage");
+      } else {
+        console.error("Failed to send emails");
+      }
+    } catch (error) {
+      console.error("Error sending emails:", error);
+    }
   };
 
   return (

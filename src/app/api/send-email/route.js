@@ -17,12 +17,12 @@ export async function POST(request) {
     const { userData, internalData } = await request.json();
 
     // Send email to the user
-    // await mg.messages.create(process.env.MAILGUN_DOMAIN, {
-    //   from: `Hello Drew Team <noreply@${process.env.MAILGUN_DOMAIN}>`,
-    //   to: userData.email,
-    //   subject: "We Got Your Info – Give Us 24-48 Hours!",
-    //   text: `Hey ${userData.firstName},\n\nThanks for reaching out! We’re reviewing your info, running some numbers, and making sure everything checks out before we get back to you. Give us 24-48 hours, and we’ll be in touch with the next steps.\n\nIf you have any urgent questions, feel free to reply to this email. Otherwise, sit tight, we’ll talk soon!\n\nCheers,\n\nThe Hello Drew Team`,
-    // });
+    await mg.messages.create(process.env.MAILGUN_DOMAIN, {
+      from: `Hello Drew Team <noreply@${process.env.MAILGUN_DOMAIN}>`,
+      to: userData.email,
+      subject: "We Got Your Info – Give Us 24-48 Hours!",
+      text: `Hey ${userData.firstName},\n\nThanks for reaching out! We’re reviewing your info, running some numbers, and making sure everything checks out before we get back to you. Give us 24-48 hours, and we’ll be in touch with the next steps.\n\nIf you have any urgent questions, feel free to reply to this email. Otherwise, sit tight, we’ll talk soon!\n\nCheers,\n\nThe Hello Drew Team`,
+    });
 
     // Send internal email to Eric and Support Team
     await mg.messages.create(process.env.MAILGUN_DOMAIN, {

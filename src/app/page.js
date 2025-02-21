@@ -69,7 +69,10 @@ export default function Home() {
             <label htmlFor="phone" className={styles.lableText}>
               Phone number, please. Drew’s calling magic is just one step away.
             </label>
-            <div className={styles.inputContainer} style={{marginBottom:"0.5rem"}}>
+            <div
+              className={styles.inputContainer}
+              style={{ marginBottom: "0.5rem" }}
+            >
               <Controller
                 name="phone"
                 control={control}
@@ -150,21 +153,46 @@ export default function Home() {
               </p>
             )}
 
-            <div className="flex justify-between items-center mt-4">
-              <button type="submit" className={styles.button}>
-                Lets Go →
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-4 gap-4">
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className={`${styles.button} w-full sm:w-auto`}
+              >
+                Let's Go →
               </button>
 
-              <div className="mt-4 flex items-center">
-                <input
-                  type="checkbox"
-                  {...register("terms", {
-                    required: "You must agree to the terms.",
-                  })}
+              {/* Terms & Conditions Section */}
+              <div className="flex flex-col justify-center items-center sm:items-end w-full sm:w-auto">
+                <Controller
+                  name="terms"
+                  control={control}
+                  rules={{ required: "You must agree to the terms." }}
+                  render={({ field }) => (
+                    <div className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id="terms"
+                        {...field}
+                        checked={field.value || false}
+                        className={`h-5 w-5 border ${
+                          errors.terms ? "border-red-500" : "border-gray-300"
+                        }`}
+                      />
+                      <label
+                        htmlFor="terms"
+                        className="ml-2 text-sm sm:text-base"
+                      >
+                        I agree to the Terms & Conditions
+                      </label>
+                    </div>
+                  )}
                 />
-                <label htmlFor="terms" className="ml-2">
-                  I agree to the Terms & Condition
-                </label>
+                {errors.terms && (
+                  <p className="text-red-500 text-xs sm:text-sm mt-1">
+                    {errors.terms.message}
+                  </p>
+                )}
               </div>
             </div>
           </form>
