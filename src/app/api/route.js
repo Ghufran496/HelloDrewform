@@ -26,8 +26,8 @@ export async function POST(request) {
     // Send internal email to Eric and Support Team
     await mg.messages.create(process.env.MAILGUN_DOMAIN, {
       from: `Hello Drew Team <noreply@${process.env.MAILGUN_DOMAIN}>`,
-      to: ["eric@hellodrew.ai", "support@hellodrew.ai"],
-      //   to: ["gcch1122@gmail.com"],
+      // to: ["eric@hellodrew.ai", "support@hellodrew.ai"],
+        to: ["gcch1122@gmail.com"],
       subject: `New Custom Team Inquiry – ${userData.firstName}`,
       text: `New Inquiry Submitted\n\nA new Custom Team / Brokerage inquiry has been received. Here are the details:\n\nName: ${userData.firstName}\n\nCompany/Brokerage: ${userData.company}\n\nEmail: ${userData.email}\n\nPhone: ${userData.phone}\n\nTeam Size: ${internalData.teamSize}\n\nPrimary CRM Used: ${internalData.crm}\n\nRequested Features: ${internalData.features}\n\nBudget Range: ${internalData.budget}\n\nAdditional Notes: ${internalData.additionalInfo}\n\nA PDF of the submitted form is attached for reference.\n\nNext Steps:\n\nReview the user's details.\n\nDetermine the best pricing/package for them.\n\nFollow up via email or phone to provide a quote and discuss their needs.\n\nContact the user directly at ${userData.phone} or ${userData.email} for follow-up.\n\nThanks,\n\nHello Drew Support Team`,
     });

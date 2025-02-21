@@ -4,7 +4,9 @@ import styles from "./landingpage/LandingPage.module.css";
 import Image from "next/image";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { isValidPhoneNumber } from "react-phone-number-input";
 import { useRouter } from "next/navigation";
+
 export default function Home() {
   const router = useRouter();
   const {
@@ -35,15 +37,15 @@ export default function Home() {
             Your MVP is Here, Time to Dominate.
           </h1>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="name" className={styles.lableText}>
               Let’s make it official. What’s your name?
             </label>
             <input
               id="name"
               type="text"
-              className={styles.inputField}
               style={{ marginBottom: "0.5rem" }}
+              className={styles.inputField}
               {...register("name", { required: "Name is required" })}
               placeholder="Enter your name"
             />
@@ -51,6 +53,7 @@ export default function Home() {
               <p className={styles.errorMessage}>{errors.name.message}</p>
             )}
 
+            {/* Email Field with Validation */}
             <label htmlFor="email" className={styles.lableText}>
               Where should I send your daily dose of real estate brilliance?
             </label>
@@ -58,36 +61,49 @@ export default function Home() {
               id="email"
               type="email"
               className={styles.inputField}
-              style={{ marginBottom: "0.5rem" }}
-              {...register("email", { required: "Email is required" })}
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Invalid email format",
+                },
+              })}
               placeholder="Enter your email"
             />
             {errors.email && (
               <p className={styles.errorMessage}>{errors.email.message}</p>
             )}
 
+            {/* Phone Number Field with Formatting */}
             <label htmlFor="phone" className={styles.lableText}>
               Phone number, please. Drew’s calling magic is just one step away.
             </label>
-            <div
-              className={styles.inputContainer}
-              style={{ marginBottom: "0.5rem" }}
-            >
+            <div className={styles.inputContainer}>
               <Controller
                 name="phone"
                 control={control}
-                rules={{ required: "Phone number is required" }}
+                rules={{
+                  required: "Phone number is required",
+                  validate: (value) =>
+                    isValidPhoneNumber(value) || "Invalid phone number",
+                }}
                 render={({ field }) => (
                   <PhoneInput
                     {...field}
                     defaultCountry="US"
+                    international
                     className={styles.phoneInput}
                   />
                 )}
               />
             </div>
             {errors.phone && (
-              <p className={styles.errorMessage}>{errors.phone.message}</p>
+              <p
+                className={styles.errorMessage}
+                style={{ marginTop: "0.5rem" }}
+              >
+                {errors.phone.message}
+              </p>
             )}
 
             <label htmlFor="brokerage" className={styles.lableText}>
@@ -96,7 +112,6 @@ export default function Home() {
             <input
               id="brokerage"
               type="text"
-              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               {...register("brokerage", {
                 required: "Brokerage name is required",
@@ -113,7 +128,6 @@ export default function Home() {
             <input
               id="website"
               type="text"
-              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               placeholder="Enter Personal Website"
               {...register("website", {
@@ -130,17 +144,16 @@ export default function Home() {
             <input
               id="teamWebsite"
               type="text"
-              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               placeholder="Enter Team Website"
               {...register("teamWebsite")}
             />
+
             <label htmlFor="teamName" className={styles.lableText}>
               Every great team has a name, what's yours? (optional)
             </label>
             <input
               id="teamName"
-              style={{ marginBottom: "0.5rem" }}
               type="text"
               className={styles.inputField}
               placeholder="Enter Team Name"

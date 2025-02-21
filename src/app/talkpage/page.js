@@ -104,7 +104,7 @@ export default function TalkPage() {
             Final Touch: Let’s Talk Numbers
           </h1>
         </div>
-        <Progress percent={90} size="small" className="mb-4" showInfo={false} />
+        <Progress percent={100} size="small" className="mb-4" showInfo={false} />
         <p className="text-gray-600 mt-2">
           Let’s get real, AI this powerful does not price itself.
         </p>
@@ -113,7 +113,7 @@ export default function TalkPage() {
             <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
               What is your budget for AI automation?
             </h2>
-            <div className="flex flex-col sm:flex-row sm:justify-evenly justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between justify-between items-center mt-4">
               {["< $500/month", "$500-$1K/month", "$1K-$2.5K/month"].map(
                 (option) => (
                   <div

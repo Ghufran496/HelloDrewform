@@ -17,9 +17,9 @@ const getyoupage = () => {
   });
 
   const [calendarToolsgetyou, setCalendarTools] = useState({
-    RescoOne: false,
-    RescoTwo: false,
-    RescoThree: false,
+    Reso: false,
+    CRMLS: false,
+    BrightMLS: false,
   });
 
   const handlesubmit = () => {
@@ -108,7 +108,7 @@ const getyoupage = () => {
                 <img
                   src={`/images/page3/${key}.png`} // Assuming the images are named the same as the calendar keys (e.g., "googleCalendar.png")
                   alt={key}
-                  className="w-6 h-6 mr-2"
+                  className="w-10 h-6 mr-2"
                 />
                 <span className="capitalize">{key}</span>
               </div>
