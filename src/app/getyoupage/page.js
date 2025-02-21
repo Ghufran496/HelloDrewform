@@ -10,7 +10,7 @@ const getyoupage = () => {
   const [crmToolsgetyou, setCrmTools] = useState({
     ZillowPremierAgent: false,
     Realtor: false,
-    Ylopo: false,
+    ylopo: false,
     BoldLeads: false,
     Cinc: false,
     Reality: false,

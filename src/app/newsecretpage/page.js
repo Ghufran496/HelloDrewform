@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 const transactionTools = {
   Dotloop: false,
-  Docusign: false,
+  docusign: false,
   SkySlope: false,
 };
 

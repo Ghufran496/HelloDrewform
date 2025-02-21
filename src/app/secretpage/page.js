@@ -19,7 +19,7 @@ const SecretPage = () => {
   const [calendarTools, setCalendarTools] = useState({
     googleCalendar: false,
     outlook: false,
-    openTable: false,
+    opentable: false,
   });
 
   const handlesubmit = () => {
@@ -62,7 +62,7 @@ const SecretPage = () => {
               {/* CRM Icon */}
               <div className="flex items-center">
                 <img
-                  src={`/images//page2/${key}.png`} // Assumes your images are named the same as the CRM keys (e.g., "followUpBoss.png")
+                  src={`/images/page2/${key}.png`} // Assumes your images are named the same as the CRM keys (e.g., "followUpBoss.png")
                   alt={key}
                   className="w-6 h-6 mr-2"
                 />
