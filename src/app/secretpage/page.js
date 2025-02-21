@@ -9,9 +9,9 @@ const SecretPage = () => {
 
   const [crmTools, setCrmTools] = useState({
     followUpBoss: false,
-    kvCore: false,
-    boomTown: false,
-    lionDesk: false,
+    kvcore: false,
+    boomtown: false,
+    liondesk: false,
     realGeeks: false,
     lofty: false,
   });
