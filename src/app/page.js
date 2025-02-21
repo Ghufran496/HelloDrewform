@@ -124,28 +124,27 @@ export default function Home() {
               <p className={styles.errorMessage}>{errors.website.message}</p>
             )}
 
-            <label htmlFor="teamName">
+            <label htmlFor="teamWebsite">
               Your team’s website where should Drew look? (optional)
             </label>
             <input
-              id="teamName"
-              type="text"
-              style={{ marginBottom: "0.5rem" }}
-              className={styles.inputField}
-              placeholder="Enter Personal Website"
-              {...register("teamName")}
-            />
-
-            <label htmlFor="teamWebsite" className={styles.lableText}>
-              Team Website (optional)
-            </label>
-            <input
               id="teamWebsite"
-              style={{ marginBottom: "0.5rem" }}
               type="text"
+              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               placeholder="Enter Team Website"
               {...register("teamWebsite")}
+            />
+            <label htmlFor="teamName" className={styles.lableText}>
+              Every great team has a name, what's yours? (optional)
+            </label>
+            <input
+              id="teamName"
+              style={{ marginBottom: "0.5rem" }}
+              type="text"
+              className={styles.inputField}
+              placeholder="Enter Team Name"
+              {...register("teamName")}
             />
             {errors.teamWebsite && (
               <p className={styles.errorMessage}>

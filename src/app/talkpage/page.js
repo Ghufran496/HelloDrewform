@@ -48,7 +48,7 @@ export default function TalkPage() {
     const userData = {
       firstName: updatedData.name, // Assuming you have this in your form data
       email: updatedData.email, // Assuming you have this in your form data
-      company: updatedData.teamName, // Assuming you have this in your form data
+      company: updatedData.brokerage, // Assuming you have this in your form data
       phone: updatedData.phone, // Assuming you have this in your form data
     };
 
@@ -69,7 +69,6 @@ export default function TalkPage() {
           : "None",
     };
 
-    console.log(updatedData.selectedFeatures, updatedData.crmTools);
     console.log(userData, internalData);
     try {
       const response = await fetch("/api", {
