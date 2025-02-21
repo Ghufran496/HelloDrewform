@@ -35,6 +35,15 @@ export default function TalkPage() {
 
     console.log("END:::::", updatedData);
 
+    // Extracting only keys with `true` values for CRM and Features
+    const formatTrueKeys = (obj) =>
+      Object.keys(obj)
+        .filter((key) => obj[key] === true)
+        .join(", "); // Convert to a structured string
+
+    const crmTools = formatTrueKeys(updatedData.crmTools || {}); // Handling null/undefined cases
+    const selectedFeatures = formatTrueKeys(updatedData.selectedFeatures || {});
+
     // Prepare data for email
     const userData = {
       firstName: updatedData.name, // Assuming you have this in your form data
@@ -44,13 +53,23 @@ export default function TalkPage() {
     };
 
     const internalData = {
-      teamSize: updatedData.talkFormData.teamSize,
-      crm: updatedData.crmTools, // Assuming you have this in your form data
-      features: updatedData.selectedFeatures, // Assuming you have this in your form data
-      budget: updatedData.talkFormData.budget,
-      additionalInfo: updatedData.talkFormData.additionalInfo,
+      teamSize:
+        updatedData.talkFormData.teamSize.length > 0
+          ? updatedData.talkFormData.teamSize
+          : "None",
+      crm: crmTools.length > 0 ? crmTools : "None", 
+      features: selectedFeatures.length > 0 ? selectedFeatures : "None",
+      budget:
+        updatedData.talkFormData.budget.length > 0
+          ? updatedData.talkFormData.budget
+          : "None",
+      additionalInfo:
+        updatedData.talkFormData.additionalInfo.length > 0
+          ? updatedData.talkFormData.additionalInfo
+          : "None",
     };
 
+    console.log(updatedData.selectedFeatures, updatedData.crmTools);
     console.log(userData, internalData);
     try {
       const response = await fetch("/api", {
