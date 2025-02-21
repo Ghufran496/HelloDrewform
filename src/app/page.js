@@ -1,101 +1,181 @@
+"use client";
+import { useForm, Controller } from "react-hook-form";
+import styles from "./landingpage/LandingPage.module.css";
 import Image from "next/image";
-
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import { useRouter } from "next/navigation";
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  const onSubmit = (data) => {
+    router.push("/secretpage");
+    console.log(data);
+  };
+
+  return (
+    <div className={styles.formContainer}>
+      <div className="flex flex-col sm:flex-row w-full max-w-7xl mx-auto">
+        {/* Left Section (Form) */}
+        <div className="flex flex-col p-6 sm:p-12 sm:w-1/2 w-full">
+          <p className={styles.title}>Say Hello to Drew!</p>
+          <h1 className={styles.subtitle}>
+            Your MVP is Here, Time to Dominate.
+          </h1>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <label htmlFor="name" className={styles.lableText}>
+              Let’s make it official. What’s your name?
+            </label>
+            <input
+              id="name"
+              type="text"
+              className={styles.inputField}
+              style={{marginBottom:"0.5rem"}}
+              {...register("name", { required: "Name is required" })}
+              placeholder="Enter your name"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {errors.name && (
+              <p className={styles.errorMessage}>{errors.name.message}</p>
+            )}
+
+            <label htmlFor="email" className={styles.lableText}>
+              Where should I send your daily dose of real estate brilliance?
+            </label>
+            <input
+              id="email"
+              type="email"
+              className={styles.inputField}
+              style={{marginBottom:"0.5rem"}}
+              {...register("email", { required: "Email is required" })}
+              placeholder="Enter your email"
+            />
+            {errors.email && (
+              <p className={styles.errorMessage}>{errors.email.message}</p>
+            )}
+
+            <label htmlFor="phone" className={styles.lableText}>
+              Phone number, please. Drew’s calling magic is just one step away.
+            </label>
+            <div className={styles.inputContainer}>
+              <Controller
+                name="phone"
+                control={control}
+                rules={{ required: "Phone number is required" }}
+                render={({ field }) => (
+                  <PhoneInput
+                    {...field}
+                    defaultCountry="US"
+                    className={styles.phoneInput}
+                  />
+                )}
+              />
+            </div>
+            {errors.phone && (
+              <p className={styles.errorMessage}>{errors.phone.message}</p>
+            )}
+
+            <label htmlFor="brokerage" className={styles.lableText}>
+              Who’s your crew? Brokerage name, please!
+            </label>
+            <input
+              id="brokerage"
+              type="text"
+              style={{marginBottom:"0.5rem"}}
+              className={styles.inputField}
+              {...register("brokerage", {
+                required: "Brokerage name is required",
+              })}
+              placeholder="Enter your current brokerage"
+            />
+            {errors.brokerage && (
+              <p className={styles.errorMessage}>{errors.brokerage.message}</p>
+            )}
+
+            <label htmlFor="website" className={styles.lableText}>
+              Any personal site I should bookmark for inspiration?
+            </label>
+            <input
+              id="website"
+              type="text"
+              style={{marginBottom:"0.5rem"}}
+              className={styles.inputField}
+              placeholder="Enter Personal Website"
+              {...register("website", {
+                required: "Personal website is required",
+              })}
+            />
+            {errors.website && (
+              <p className={styles.errorMessage}>{errors.website.message}</p>
+            )}
+
+            <label htmlFor="teamName">
+              Your team’s website where should Drew look? (optional)
+            </label>
+            <input
+              id="teamName"
+              type="text"
+              style={{marginBottom:"0.5rem"}}
+              className={styles.inputField}
+              placeholder="Enter Personal Website"
+              {...register("teamName")}
+            />
+
+            <label htmlFor="teamWebsite" className={styles.lableText}>
+              Team Website (optional)
+            </label>
+            <input
+              id="teamWebsite"
+              style={{marginBottom:"0.5rem"}}
+              type="text"
+              className={styles.inputField}
+              placeholder="Enter Team Website"
+              {...register("teamWebsite")}
+            />
+            {errors.teamWebsite && (
+              <p className={styles.errorMessage}>
+                {errors.teamWebsite.message}
+              </p>
+            )}
+
+            <div className="flex justify-between items-center mt-4">
+              <button type="submit" className={styles.button}>
+                Lets Go →
+              </button>
+
+              <div className="mt-4 flex items-center">
+                <input
+                  type="checkbox"
+                  
+                  {...register("terms", {
+                    required: "You must agree to the terms.",
+                  })}
+                />
+                <label htmlFor="terms" className="ml-2">
+                  I agree to the Terms & Condition
+                </label>
+              </div>
+            </div>
+          </form>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* Right Section (Image) */}
+        <div className={`${styles.imageSection} hidden sm:block sm:w-1/2`}>
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/images/Picture1.jpg"
+            alt="Form Image"
+            width={600}
+            height={600}
+            layout="responsive"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+      </div>
     </div>
   );
 }
