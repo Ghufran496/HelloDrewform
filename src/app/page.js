@@ -69,7 +69,7 @@ export default function Home() {
             <label htmlFor="phone" className={styles.lableText}>
               Phone number, please. Drew’s calling magic is just one step away.
             </label>
-            <div className={styles.inputContainer}>
+            <div className={styles.inputContainer} style={{marginBottom:"0.5rem"}}>
               <Controller
                 name="phone"
                 control={control}

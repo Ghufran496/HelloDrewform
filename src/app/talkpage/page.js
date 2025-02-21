@@ -52,31 +52,32 @@ export default function TalkPage() {
             Final Touch: Let’s Talk Numbers
           </h1>
         </div>
-        <Progress percent={30} size="small" className="mb-4" showInfo={false} />
+        <Progress percent={90} size="small" className="mb-4" showInfo={false} />
         <p className="text-gray-600 mt-2">
           Let’s get real, AI this powerful does not price itself.
         </p>
         <div className="mt-6 space-y-6">
-          {/* Budget Selection */}
           <div className="border p-4 rounded-lg shadow-sm">
-            <h2 className="font-semibold">
+            <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
               What is your budget for AI automation?
             </h2>
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row sm:justify-evenly justify-between items-center mt-4">
               {["< $500/month", "$500-$1K/month", "$1K-$2.5K/month"].map(
                 (option) => (
-                  <div key={option} className="flex items-center space-x-2">
+                  <div
+                    key={option}
+                    className="flex items-center space-x-2 sm:space-x-2 mb-4 sm:mb-0"
+                  >
                     <Switch
                       checked={talkFormData.budget === option}
                       onChange={() => handleSwitchChange("budget", option)}
                     />
-                    <span className="text-sm">{option}</span>
+                    <span className="text-sm sm:text-sm">{option}</span>
                   </div>
                 )
               )}
             </div>
           </div>
-
           {/* Team Size */}
           <div className="border p-4 rounded-lg shadow-sm">
             <h2 className="font-semibold">How many people are on your team?</h2>

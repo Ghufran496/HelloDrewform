@@ -115,7 +115,7 @@ const newsecretpage = () => {
           />
           <h1 className="text-2xl font-bold">Your New Secret Weapons</h1>
         </div>
-        <Progress percent={30} size="small" className="mb-4" showInfo={false} />
+        <Progress percent={70} size="small" className="mb-4" showInfo={false} />
         <p className="text-gray-600 mt-2">
           Effortless Integration, Powerful Results.
         </p>
