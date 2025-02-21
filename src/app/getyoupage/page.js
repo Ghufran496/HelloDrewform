@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const getyoupage = () => {
   const router = useRouter();
 
-  const [crmTools, setCrmTools] = useState({
+  const [crmToolsgetyou, setCrmTools] = useState({
     ZillowPremierAgent: false,
     Realtor: false,
     Ylopo: false,
@@ -16,14 +16,22 @@ const getyoupage = () => {
     Reality: false,
   });
 
-  const [calendarTools, setCalendarTools] = useState({
-    Resco: false,
-    Resco: false,
-    Resco: false,
+  const [calendarToolsgetyou, setCalendarTools] = useState({
+    RescoOne: false,
+    RescoTwo: false,
+    RescoThree: false,
   });
 
   const handlesubmit = () => {
-    console.log(crmTools, calendarTools);
+    const storedData = sessionStorage.getItem("formData");
+    const parsedData = storedData ? JSON.parse(storedData) : {};
+
+    const updatedData = { ...parsedData, crmToolsgetyou, calendarToolsgetyou };
+
+    sessionStorage.setItem("formData", JSON.stringify(updatedData));
+
+    console.log("Updated Session Data:", updatedData); // Debugging log
+    console.log(crmToolsgetyou, calendarToolsgetyou);
     router.push("/newsecretpage");
   };
 
@@ -51,7 +59,7 @@ const getyoupage = () => {
         </div>
 
         {/* Progress Bar (30% Completion) */}
-        <Progress percent={30} size="small" className="mb-4" showInfo={false} />
+        <Progress percent={50} size="small" className="mb-4" showInfo={false} />
         <p className="text-gray-600 mt-2">Sync it Crush it.</p>
 
         {/* CRM Selection */}
@@ -59,7 +67,7 @@ const getyoupage = () => {
           <h2 className="text-lg font-semibold">
             Which lead sources do you Really on?
           </h2>
-          {Object.keys(crmTools).map((key) => (
+          {Object.keys(crmToolsgetyou).map((key) => (
             <div key={key} className="flex justify-between items-center py-2">
               {/* CRM Icon */}
               <div className="flex items-center">
@@ -71,16 +79,16 @@ const getyoupage = () => {
                 <span className="capitalize">{key}</span>
               </div>
               <div className="flex items-center space-x-2">
-                {crmTools[key] && (
+                {crmToolsgetyou[key] && (
                   <span className="text-green-700 font-semibold flex justify-center items-center">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>
                 )}
                 <Switch
-                  checked={crmTools[key]}
+                  checked={crmToolsgetyou[key]}
                   onChange={(checked) =>
-                    setCrmTools({ ...crmTools, [key]: checked })
+                    setCrmTools({ ...crmToolsgetyou, [key]: checked })
                   }
                 />
               </div>
@@ -93,7 +101,7 @@ const getyoupage = () => {
           <h2 className="text-lg font-semibold">
             Which calendar & scheduling tools do you use?
           </h2>
-          {Object.keys(calendarTools).map((key) => (
+          {Object.keys(calendarToolsgetyou).map((key) => (
             <div key={key} className="flex justify-between items-center py-2">
               {/* Calendar Icon */}
               <div className="flex items-center">
@@ -105,16 +113,16 @@ const getyoupage = () => {
                 <span className="capitalize">{key}</span>
               </div>
               <div className="flex items-center space-x-2">
-                {calendarTools[key] && (
+                {calendarToolsgetyou[key] && (
                   <span className="text-green-700 font-semibold flex items-center">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>
                 )}
                 <Switch
-                  checked={calendarTools[key]}
+                  checked={calendarToolsgetyou[key]}
                   onChange={(checked) =>
-                    setCalendarTools({ ...calendarTools, [key]: checked })
+                    setCalendarTools({ ...calendarToolsgetyou, [key]: checked })
                   }
                 />
               </div>

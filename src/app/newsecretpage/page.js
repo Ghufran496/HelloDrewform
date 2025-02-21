@@ -91,6 +91,14 @@ const newsecretpage = () => {
     setSelectedFeatures((prev) => ({ ...prev, [key]: checked }));
 
   const handlesubmit = () => {
+    const storedData = sessionStorage.getItem("formData");
+    const parsedData = storedData ? JSON.parse(storedData) : {};
+
+    const updatedData = { ...parsedData, selectedTools, selectedFeatures };
+
+    sessionStorage.setItem("formData", JSON.stringify(updatedData));
+
+    console.log("Updated Session Data:", updatedData); // Debugging log
     console.log(selectedTools, selectedFeatures);
     router.push("/talkpage");
   };

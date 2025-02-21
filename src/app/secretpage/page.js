@@ -24,6 +24,14 @@ const SecretPage = () => {
 
   const handlesubmit = () => {
     console.log(crmTools, calendarTools);
+    const storedData = sessionStorage.getItem("formData");
+    const parsedData = storedData ? JSON.parse(storedData) : {};
+
+    const updatedData = { ...parsedData, crmTools, calendarTools };
+
+    sessionStorage.setItem("formData", JSON.stringify(updatedData));
+
+    console.log("Updated Session Data:", updatedData); // Debugging log
     router.push("/getyoupage");
   };
 

@@ -15,6 +15,12 @@ export default function Home() {
   } = useForm();
 
   const onSubmit = (data) => {
+    const storedData = sessionStorage.getItem("formData");
+    const parsedData = storedData ? JSON.parse(storedData) : {};
+
+    const updatedData = { ...parsedData, ...data };
+
+    sessionStorage.setItem("formData", JSON.stringify(updatedData));
     router.push("/secretpage");
     console.log(data);
   };
@@ -37,7 +43,7 @@ export default function Home() {
               id="name"
               type="text"
               className={styles.inputField}
-              style={{marginBottom:"0.5rem"}}
+              style={{ marginBottom: "0.5rem" }}
               {...register("name", { required: "Name is required" })}
               placeholder="Enter your name"
             />
@@ -52,7 +58,7 @@ export default function Home() {
               id="email"
               type="email"
               className={styles.inputField}
-              style={{marginBottom:"0.5rem"}}
+              style={{ marginBottom: "0.5rem" }}
               {...register("email", { required: "Email is required" })}
               placeholder="Enter your email"
             />
@@ -87,7 +93,7 @@ export default function Home() {
             <input
               id="brokerage"
               type="text"
-              style={{marginBottom:"0.5rem"}}
+              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               {...register("brokerage", {
                 required: "Brokerage name is required",
@@ -104,7 +110,7 @@ export default function Home() {
             <input
               id="website"
               type="text"
-              style={{marginBottom:"0.5rem"}}
+              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               placeholder="Enter Personal Website"
               {...register("website", {
@@ -121,7 +127,7 @@ export default function Home() {
             <input
               id="teamName"
               type="text"
-              style={{marginBottom:"0.5rem"}}
+              style={{ marginBottom: "0.5rem" }}
               className={styles.inputField}
               placeholder="Enter Personal Website"
               {...register("teamName")}
@@ -132,7 +138,7 @@ export default function Home() {
             </label>
             <input
               id="teamWebsite"
-              style={{marginBottom:"0.5rem"}}
+              style={{ marginBottom: "0.5rem" }}
               type="text"
               className={styles.inputField}
               placeholder="Enter Team Website"
@@ -152,7 +158,6 @@ export default function Home() {
               <div className="mt-4 flex items-center">
                 <input
                   type="checkbox"
-                  
                   {...register("terms", {
                     required: "You must agree to the terms.",
                   })}
