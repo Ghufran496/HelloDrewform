@@ -54,7 +54,7 @@ const SecretPage = () => {
 
         {/* CRM Selection */}
         <Card className="mt-4">
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-lg font-semibold text-center">
             Which CRM(s) are you currently using?
           </h2>
           {Object.keys(crmTools).map((key) => (
@@ -72,7 +72,7 @@ const SecretPage = () => {
               </div>
               <div className="flex items-center space-x-2">
                 {crmTools[key] && (
-                  <span className="text-green-700 font-semibold flex justify-center items-center">
+                  <span className="text-green-700 font-semibold flex justify-end text-right text-sm items-center sm:text-sm">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>
@@ -96,7 +96,7 @@ const SecretPage = () => {
           {Object.keys(calendarTools).map((key) => (
             <div key={key} className="flex justify-between items-center py-2">
               {/* Calendar Icon */}
-              <div className="flex items-center">
+              <div className="flex items-end justify-end">
                 <img
                   src={`/images/page2/${key}.png`} // Assumes your images are named the same as the calendar tool keys (e.g., "googleCalendar.png")
                   alt={key}
@@ -108,7 +108,7 @@ const SecretPage = () => {
               </div>
               <div className="flex items-center space-x-2">
                 {calendarTools[key] && (
-                  <span className="text-green-700 font-semibold flex items-center">
+                  <span className="text-green-700 font-semibold flex justify-end text-right text-sm items-center sm:text-sm">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>

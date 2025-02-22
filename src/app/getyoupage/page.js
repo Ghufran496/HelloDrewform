@@ -69,7 +69,7 @@ const getyoupage = () => {
 
         {/* CRM Selection */}
         <Card className="mt-4">
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-lg font-semibold text-center">
             Which lead sources do you Really on?
           </h2>
           {Object.keys(crmToolsgetyou).map((key) => (
@@ -81,11 +81,21 @@ const getyoupage = () => {
                   alt={key}
                   className="w-6 h-6 mr-2"
                 />
-                <span className="capitalize">{key}</span>
+                <span className="capitalize">
+                  {key === "ZillowPremierAgent" ? (
+                    <>
+                      Zillow
+                      <br />
+                      PremierAgent
+                    </>
+                  ) : (
+                    key
+                  )}
+                </span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-end space-x-2">
                 {crmToolsgetyou[key] && (
-                  <span className="text-green-700 font-semibold flex justify-center items-center">
+                  <span className="text-green-700 font-semibold flex justify-end text-right text-sm items-center sm:text-sm">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>
@@ -117,9 +127,9 @@ const getyoupage = () => {
                 />
                 <span className="capitalize">{key}</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-end space-x-2">
                 {calendarToolsgetyou[key] && (
-                  <span className="text-green-700 font-semibold flex items-center">
+                  <span className="text-green-700 font-semibold flex justify-end text-right text-sm items-center sm:text-sm">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>
