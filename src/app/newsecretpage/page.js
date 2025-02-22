@@ -138,7 +138,7 @@ const newsecretpage = () => {
               </div>
               <div className="flex items-center space-x-2">
                 {selectedTools[key] && (
-                  <span className="text-green-700 font-semibold flex justify-center items-center">
+                  <span className="text-green-700 font-semibold flex justify-end text-right text-sm items-center sm:text-sm">
                     Your Power Moves
                     <CheckCircleFilled className="text-green-500 ml-1" />
                   </span>
@@ -165,7 +165,9 @@ const newsecretpage = () => {
                 >
                   <div>
                     <h3 className="text-lg font-bold">{title}</h3>
-                    <p className="text-gray-600 text-sm mb-2">{description}</p>
+                    <p className="text-gray-600 text-sm mb-2 pr-3">
+                      {description}
+                    </p>
                   </div>
                   <Switch
                     checked={selectedFeatures[key] || false}
@@ -183,7 +185,9 @@ const newsecretpage = () => {
                 >
                   <div>
                     <h3 className="text-lg font-bold">{title}</h3>
-                    <p className="text-gray-600 text-sm mb-2">{description}</p>
+                    <p className="text-gray-600 text-sm mb-2 pr-3">
+                      {description}
+                    </p>
                   </div>
                   <Switch
                     checked={selectedFeatures[key] || false}

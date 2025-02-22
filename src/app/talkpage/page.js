@@ -90,7 +90,7 @@ export default function TalkPage() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row min-h-screen bg-white  sm:p-4  sm:m-4">
+    <div className="flex flex-col sm:flex-row min-h-screen bg-white sm:p-4 sm:m-4">
       {/* Left Section */}
       <div className="w-full sm:w-1/2 p-6">
         {/* Back Button + Heading */}
@@ -114,17 +114,18 @@ export default function TalkPage() {
           Let’s get real, AI this powerful does not price itself.
         </p>
         <div className="mt-6 space-y-6">
+          {/* Budget Section */}
           <div className="border p-4 rounded-lg shadow-sm">
             <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">
               What is your budget for AI automation?
             </h2>
-            <div className="flex flex-col sm:flex-row sm:justify-between justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between justify-between items-center mt-4 space-y-4 sm:space-y-0">
               {["< $500/month", "$500-$1K/month", "$1K-$2.5K/month"].map(
                 (option) => (
-                  <div className="w-1/3">
+                  <div className="w-full sm:w-1/3">
                     <div
                       key={option}
-                      className="flex items-center space-x-2 sm:space-x-2 mb-4 sm:mb-0"
+                      className="flex items-center space-x-2 sm:space-x-2 sm:mb-0"
                     >
                       <Switch
                         checked={talkFormData.budget === option}
@@ -137,12 +138,13 @@ export default function TalkPage() {
               )}
             </div>
           </div>
-          {/* Team Size */}
+
+          {/* Team Size Section */}
           <div className="border p-4 rounded-lg shadow-sm">
             <h2 className="font-semibold">How many people are on your team?</h2>
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
               {["1-5", "6-10", "11-50"].map((option) => (
-                <div className="w-1/3">
+                <div className="w-full sm:w-1/3">
                   <div key={option} className="flex items-center space-x-2">
                     <Switch
                       checked={talkFormData.teamSize === option}
@@ -155,14 +157,14 @@ export default function TalkPage() {
             </div>
           </div>
 
-          {/* Leads Managed Daily */}
+          {/* Leads Managed Daily Section */}
           <div className="border p-4 rounded-lg shadow-sm">
             <h2 className="font-semibold">
               How many leads are you managing daily?
             </h2>
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
               {["< 15/day", "15-50/day", "50-100/day"].map((option) => (
-                <div className="w-1/3">
+                <div className="w-full sm:w-1/3">
                   <div key={option} className="flex items-center space-x-2">
                     <Switch
                       checked={talkFormData.leads === option}
@@ -175,14 +177,14 @@ export default function TalkPage() {
             </div>
           </div>
 
-          {/* Lead Distribution */}
+          {/* Lead Distribution Section */}
           <div className="border p-4 rounded-lg shadow-sm">
             <h2 className="font-semibold">
               How would you like leads to be divided?
             </h2>
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
               {["Evenly", "Expertise or Region", "Manual"].map((option) => (
-                <div className="w-1/3">
+                <div className="w-full sm:w-1/3">
                   <div key={option} className="flex items-center space-x-2">
                     <Switch
                       checked={talkFormData.leadDistribution === option}
@@ -197,15 +199,15 @@ export default function TalkPage() {
             </div>
           </div>
 
-          {/* Biggest Challenge */}
+          {/* Biggest Challenge Section */}
           <div className="border p-4 rounded-lg shadow-sm">
             <h2 className="font-semibold">
               What is your team’s biggest challenge right now?
             </h2>
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-4 sm:space-y-0">
               {["No automation", "Slow follow ups", "Too many leads"].map(
                 (option) => (
-                  <div className="w-1/3">
+                  <div className="w-full sm:w-1/3">
                     <div key={option} className="flex items-center space-x-2">
                       <Switch
                         checked={talkFormData.challenge === option}
@@ -238,15 +240,16 @@ export default function TalkPage() {
           </div>
         </div>
       </div>
+
       {/* Right Section */}
-      <div className="sm:block hidden w-full sm:w-1/2  flex items-center justify-center mt-6 sm:mt-0">
+      <div className="sm:block hidden w-full sm:w-1/2 flex items-center justify-center mt-6 sm:mt-0">
         <div className="flex justify-center items-center h-[calc(100vh-2rem)] w-full sticky top-4">
           <img
             alt="Dashboard Preview"
             loading="lazy"
             decoding="async"
             src="/images/Picture5.jpg" // Replace with your image
-            className="h-auto w-4/6 px-3 "
+            className="h-auto w-4/6 px-3"
             style={{ color: "transparent" }}
           />
         </div>
