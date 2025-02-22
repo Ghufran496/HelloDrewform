@@ -31,9 +31,14 @@ export default function Home() {
     <div className={styles.formContainer}>
       <div className="flex flex-col sm:flex-row w-full max-w-7xl mx-auto">
         {/* Left Section (Form) */}
-        <div className="flex flex-col sm:p-12 sm:w-1/2 w-full">
-          <p className={styles.title}>Say Hello to Drew!</p>
-          <h1 className={styles.subtitle}>
+        <div className="flex flex-col sm:p-8 sm:w-1/2 w-full">
+          <p className={styles.title}>
+            Say Hello to <span className="font-bold">Drew 👋</span>
+          </p>
+          <h1
+            className={`${styles.subtitle} font-bold`}
+            style={{ fontFamily: "Harmonia Sans" }}
+          >
             Your MVP is Here, Time to Dominate.
           </h1>
 
@@ -145,7 +150,7 @@ export default function Home() {
               id="teamWebsite"
               type="text"
               className={styles.inputField}
-              placeholder="Enter Team Website"
+              placeholder="Enter Team Name"
               {...register("teamWebsite")}
             />
 
@@ -156,7 +161,7 @@ export default function Home() {
               id="teamName"
               type="text"
               className={styles.inputField}
-              placeholder="Enter Team Name"
+              placeholder="Enter Team Website"
               {...register("teamName")}
             />
             {errors.teamWebsite && (
