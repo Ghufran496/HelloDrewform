@@ -77,7 +77,7 @@ const getyoupage = () => {
               {/* CRM Icon */}
               <div className="flex items-center">
                 <img
-                  src={`/images/page3/${key}.png`} // Assuming the images are named the same as the CRM keys (e.g., "ZillowPremierAgent.png")
+                  src={`/images/page3/${key}.png`} // Assuming the33test images are named the same as the CRM keys (e.g., "ZillowPremierAgent.png")
                   alt={key}
                   className="w-6 h-6 mr-2"
                 />
